@@ -1,0 +1,75 @@
+# =========================================================
+# REGRAS DO GITIGNORE — BLOG & PORTFÓLIO
+# =========================================================
+# Este arquivo impede o envio de senhas, backups de banco de
+# dados, arquivos temporários e configurações locais ao Git/Hostinger.
+# =========================================================
+
+# ---------------------------------------------------------
+# 1. Credenciais & Arquivos de Configuração Sensíveis
+# ---------------------------------------------------------
+config/db.php
+config/db2.php
+config/db_*.php
+!config/db.example.php
+.env
+.env.*
+*.env
+
+# ---------------------------------------------------------
+# 2. Dumps de Banco de Dados & Backups SQL
+# ---------------------------------------------------------
+*.sql
+blog_portfolio_export.sql
+
+# ---------------------------------------------------------
+# 3. Pastas Temporárias, Rascunhos & Scripts de Migração
+# ---------------------------------------------------------
+scratch/
+config/run_*.php
+config/init_db.php
+
+# ---------------------------------------------------------
+# 4. Uploads de Usuário & Arquivos de Mídia Dinâmicos
+# ---------------------------------------------------------
+assets/img/uploads/*
+!assets/img/uploads/.gitkeep
+
+# ---------------------------------------------------------
+# 5. Dependências PHP e Node.js
+# ---------------------------------------------------------
+/vendor/
+/node_modules/
+composer.lock
+package-lock.json
+
+# ---------------------------------------------------------
+# 6. IDEs, Editores de Código & Sistema Operacional
+# ---------------------------------------------------------
+.vscode/
+.idea/
+.gemini/
+.agent/
+.agents/
+*.suo
+*.user
+*.useroslog
+*.sln
+*.docstates
+
+# Windows OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+[Dd]esktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Logs & Arquivos Temporários
+*.log
+logs/
+*.tmp
+*.temp

@@ -1,0 +1,642 @@
+/* Importação de Fontes do Google Fonts */
+/* font-family: 'IBM Plex Mono', monospace; (Para títulos e mono espaçado) */
+/* font-family: 'Inter', sans-serif; (Para corpo de texto) */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap');
+
+/* Variáveis de Cores (Baseadas na imagem de referência) */
+:root {
+    --purple-light: #F0F0FF; /* Fundo principal */
+    --purple-medium: #E2DFFF; /* Fundo da sidebar */
+    --purple-dark: #6C5CE7;  /* Roxo principal, links, barras de progresso */
+    --green-pastel: #A2E0C8; /* Verde pastel */
+    --text-dark: #333355;    /* Texto de títulos e principal */
+    --text-light: #5A5A7B;   /* Texto secundário, parágrafos */
+    --border-light: #DCDCDC; /* Borda suave */
+    --card-bg: #FFFFFF;      /* Fundo dos cards */
+    --shadow-soft: rgba(0, 0, 0, 0.08); /* Sombra leve */
+    --accent-color: #FFD700; /* Dourado para detalhes, como a cor da paleta */
+}
+
+/* Reset Básico e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-light);
+    background-color: var(--purple-light);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* Centraliza o container */
+    padding: 20px; /* Espaçamento ao redor do container */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--text-dark);
+    margin-bottom: 0.8em;
+}
+
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.2em; } /* Mais ajustado para sidebar */
+
+a {
+    color: var(--purple-dark);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--purple-dark);
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Container Principal (layout de duas colunas) */
+.container {
+    display: flex;
+    gap: 20px; /* Espaçamento entre sidebar e conteúdo principal */
+    max-width: 1400px; /* Largura máxima do layout */
+    width: 100%;
+    background-color: var(--purple-light);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-soft);
+    overflow: hidden; /* Garante que elementos filhos não vazem */
+}
+
+/* Estilo da Sidebar */
+#sidebar {
+    flex-shrink: 0; /* Não permite que a sidebar diminua */
+    width: 320px; /* Largura fixa da sidebar */
+    background-color: var(--purple-medium);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px 0 0 15px; /* Bordas arredondadas apenas à esquerda */
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05); /* Sombra sutil à direita */
+    position: sticky; /* Sidebar fixa ao rolar, se o contêiner permitir */
+    top: 20px; /* Distância do topo */
+    height: calc(100vh - 40px); /* Altura total menos padding do body */
+    overflow-y: auto; /* Scroll para conteúdo da sidebar */
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--purple-dark);
+    margin-bottom: 10px;
+    box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.2);
+}
+
+.sidebar-header h2 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+.sidebar-header p {
+    font-size: 0.9em;
+    color: var(--text-light);
+    margin-bottom: 15px;
+}
+
+.social-icons a {
+    font-size: 1.3em;
+    margin: 0 8px;
+    color: var(--text-dark);
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--purple-dark);
+}
+
+.sidebar-nav {
+    margin-bottom: 2em;
+}
+
+.sidebar-nav h3 {
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+    color: var(--purple-dark);
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.project-progress {
+    margin-bottom: 15px;
+}
+
+.project-progress p {
+    font-size: 0.95em;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.progress-bar-container {
+    width: 100%;
+    background-color: #E0E0E0;
+    border-radius: 5px;
+    height: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--purple-dark);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Texto 25% fica na ponta da barra */
+    padding-right: 5px;
+    color: white;
+    font-size: 0.7em;
+    font-weight: 600;
+}
+
+.sidebar-nav ul {
+    margin-top: 1em;
+}
+
+.sidebar-nav ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar-nav ul li a {
+    color: var(--text-dark);
+    font-size: 0.95em;
+    padding: 5px 0;
+    display: block;
+    transition: color 0.2s ease;
+}
+.sidebar-nav ul li a:hover {
+    color: var(--purple-dark);
+    text-decoration: none;
+}
+
+.sidebar-footer {
+    margin-top: auto; /* Empurra para o final */
+    padding-top: 2em;
+    border-top: 1px solid var(--border-light);
+    text-align: center;
+}
+
+.sidebar-footer h3 {
+    color: var(--purple-dark);
+    margin-bottom: 1em;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.crowdfunding-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--card-bg);
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-light);
+}
+
+.crowdfunding-item span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9em;
+    color: var(--text-dark);
+}
+
+.support-btn {
+    background-color: var(--purple-dark);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.support-btn:hover {
+    background-color: #5544C2; /* Um tom mais escuro */
+}
+
+
+/* Estilo do Conteúdo Principal */
+#main-content {
+    flex-grow: 1; /* Ocupa o restante do espaço */
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-header {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px var(--shadow-soft);
+    border: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    position: relative; /* Para posicionar o balão de fala */
+}
+
+.header-character {
+    width: 150px; /* Ajuste conforme o tamanho da sua imagem */
+    height: auto;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.speech-bubble {
+    background-color: var(--green-pastel);
+    color: var(--text-dark);
+    padding: 12px 18px;
+    border-radius: 20px;
+    position: relative;
+    margin-left: 10px; /* Espaçamento da imagem */
+    font-size: 1em;
+    flex-grow: 1;
+}
+
+.speech-bubble::before {
+    content: '';
+    position: absolute;
+    left: -15px; /* Posição do "bico" do balão */
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 25px;
+    height: 25px;
+    background-color: var(--green-pastel);
+    border-radius: 0 0 0 5px;
+    box-shadow: -2px 2px 5px rgba(0,0,0,0.1); /* Sombra no bico */
+    z-index: -1;
+}
+
+.speech-bubble p {
+    margin: 0;
+    font-weight: 500;
+}
+
+.color-palette {
+    display: flex;
+    gap: 5px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.color-palette div {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.content-section {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px var(--shadow-soft);
+    border: 1px solid var(--border-light);
+}
+
+/* Seção Sobre Mim */
+.about-section p {
+    margin-bottom: 1em;
+    font-size: 1em;
+    color: var(--text-light);
+}
+
+.about-section ul {
+    list-style: disc; /* Bolinhas para a lista */
+    margin-left: 20px;
+    margin-bottom: 1.5em;
+}
+
+.about-section ul li {
+    margin-bottom: 0.5em;
+    color: var(--text-light);
+}
+
+.about-section strong {
+    color: var(--text-dark); /* Texto em negrito mais escuro */
+}
+
+/* Seção do Blog */
+.blog-section h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+.section-description {
+    text-align: center;
+    margin-bottom: 2em;
+    font-size: 1em;
+    color: var(--text-light);
+}
+
+.search-filter-bar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 2em;
+    align-items: center;
+    flex-wrap: wrap; /* Para responsividade */
+}
+
+.search-input {
+    flex-grow: 1; /* Ocupa o máximo de espaço */
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-input i {
+    position: absolute;
+    left: 15px;
+    color: var(--text-light);
+}
+
+.search-input input {
+    width: 100%;
+    padding: 12px 15px 12px 40px; /* Espaço para o ícone */
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 0.95em;
+    color: var(--text-dark);
+    background-color: var(--purple-light);
+}
+
+.search-input input::placeholder {
+    color: var(--text-light);
+}
+
+.filter-dropdown, .search-btn {
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+}
+
+.filter-dropdown {
+    border: 1px solid var(--border-light);
+    background-color: var(--purple-light);
+    color: var(--text-dark);
+    min-width: 120px;
+}
+
+.search-btn {
+    background-color: var(--purple-dark);
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #5544C2;
+}
+
+
+/* Grid de Cards de Blog */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.blog-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow-soft);
+    border: 1px solid var(--border-light);
+    overflow: hidden; /* Garante que a imagem não vaze */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--shadow-soft);
+}
+
+.card-image-placeholder {
+    width: 100%;
+    height: 180px; /* Altura da imagem */
+    background-color: var(--purple-medium); /* Cor de placeholder para a imagem */
+    /* Adicionar um fundo com imagem real aqui */
+    /* background-image: url('caminho/para/sua/imagem.jpg'); */
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.blog-card > * { /* Aplica padding a todos os filhos diretos do card, exceto a imagem */
+    padding: 0 20px;
+}
+
+.card-tag {
+    background-color: var(--green-pastel);
+    color: var(--text-dark);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 15px; /* Espaçamento da imagem */
+    margin-bottom: 10px;
+}
+
+.blog-card h3 {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    line-height: 1.4;
+}
+
+.blog-card p {
+    font-size: 0.9em;
+    margin-bottom: 1em;
+    flex-grow: 1; /* Faz o parágrafo ocupar o espaço para alinhar o botão */
+}
+
+.card-date {
+    font-size: 0.8em;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    display: block; /* Garante que a data fique em uma linha separada */
+}
+
+.read-more-btn {
+    display: block;
+    width: calc(100% - 40px); /* Largura do botão menos o padding lateral */
+    margin: 0 20px 20px; /* Centraliza horizontalmente com o padding */
+    padding: 10px 15px;
+    background-color: var(--purple-dark);
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.read-more-btn:hover {
+    background-color: #5544C2;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 25px;
+    margin-top: 25px;
+    font-size: 0.85em;
+    color: var(--text-light);
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 2px 10px var(--shadow-soft);
+}
+
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column; /* Sidebar em cima do conteúdo */
+        gap: 0;
+        max-width: 90%;
+    }
+
+    #sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-radius: 15px 15px 0 0;
+        padding-bottom: 20px; /* Para evitar corte no final */
+    }
+
+    .sidebar-nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 15px; /* Espaçamento entre os links da navegação */
+    }
+
+    .sidebar-nav ul li {
+        margin-bottom: 0;
+    }
+
+    .sidebar-nav ul li a {
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: var(--purple-light); /* Fundo para os links no mobile */
+    }
+
+    .sidebar-nav ul li a:hover {
+         background-color: var(--purple-dark);
+         color: white;
+    }
+
+    #main-content {
+        padding: 20px;
+    }
+
+    .main-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px 20px 30px; /* Ajuste do padding */
+    }
+
+    .header-character {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .speech-bubble {
+        margin-left: 0;
+        width: fit-content; /* Ajusta a largura ao conteúdo */
+        max-width: 80%; /* Para não ficar muito largo */
+        align-self: center; /* Centraliza o balão */
+        margin-bottom: 15px;
+    }
+
+    .speech-bubble::before {
+        left: 50%;
+        top: -10px; /* Bico para cima */
+        transform: translateX(-50%) rotate(45deg);
+        box-shadow: 2px -2px 5px rgba(0,0,0,0.1);
+    }
+
+    .color-palette {
+        position: static; /* Não flutua */
+        margin-top: 20px;
+        justify-content: center;
+    }
+
+    .search-filter-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .filter-dropdown, .search-btn {
+        width: 100%;
+    }
+
+    .blog-card > * {
+        padding: 0 15px;
+    }
+    .read-more-btn {
+        width: calc(100% - 30px);
+        margin: 0 15px 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        border-radius: 10px;
+    }
+    #sidebar {
+        padding: 20px 15px;
+    }
+    #main-content {
+        padding: 15px;
+    }
+    .main-header {
+        padding: 20px 15px 25px;
+    }
+    .header-character {
+        width: 120px;
+    }
+    .speech-bubble {
+        max-width: 90%;
+    }
+}
