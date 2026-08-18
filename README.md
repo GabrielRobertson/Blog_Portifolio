@@ -6,13 +6,14 @@ Um sistema completo, dinâmico e modular de **Blog & Portfólio Pessoal/Profissi
 
 ## 📌 Índice
 1. [Sobre o Projeto](#-sobre-o-projeto)
-2. [Linguagens e Tecnologias Utilizadas](#-linguagens-e-tecnologias-utilizadas)
-3. [Entendendo a Linguagem PHP](#-entendendo-a-linguagem-php)
-4. [Arquitetura & Reutilização de Código](#-arquitetura--reutilização-de-código)
-5. [Estrutura do Projeto](#-estrutura-do-projeto)
-6. [Como Configurar e Executar (Passo a Passo)](#-como-configurar-e-executar-passo-a-passo)
-7. [Como Reutilizar o Projeto para Outros Fins](#-como-reutilizar-o-projeto-para-outros-fins)
-8. [Painel Administrativo (CMS)](#-painel-administrativo-cms)
+2. [Demonstração Visual (Screenshots)](#-demonstração-visual-screenshots)
+3. [Linguagens e Tecnologias Utilizadas](#-linguagens-e-tecnologias-utilizadas)
+4. [Entendendo a Linguagem PHP](#-entendendo-a-linguagem-php)
+5. [Arquitetura & Reutilização de Código](#-arquitetura--reutilização-de-código)
+6. [Estrutura do Projeto](#-estrutura-do-projeto)
+7. [Como Configurar e Executar (Passo a Passo)](#-como-configurar-e-executar-passo-a-passo)
+8. [Como Reutilizar o Projeto para Outros Fins](#-como-reutilizar-o-projeto-para-outros-fins)
+9. [Painel Administrativo (CMS)](#-painel-administrativo-cms)
 
 ---
 
@@ -26,6 +27,19 @@ O **Blog & Portfólio Tech** foi projetado para servir como um centro de presen�
 - **Laboratório & Hobbies**: Área dedicada a artigos, experimentos e projetos pessoais.
 - **Formulário de Contato**: Envio de mensagens diretamente salvas no banco de dados para gestão via CMS.
 - **Painel CMS Administrativo**: Área restrita com login seguro para cadastro, edição e exclusão de todos os dados do site.
+
+---
+
+## 📸 Demonstração Visual (Screenshots)
+
+### 1. Interface Principal do Portfólio (Front-end)
+![Preview do Portfólio](assets/img/preview_portfolio.jpg)
+
+### 2. Painel Administrativo CMS (Dashboard & Gestão)
+![Preview do Painel CMS Admin](assets/img/preview_admin.jpg)
+
+### 3. Laboratório de Hobbies & Experimentos (Artigos Técnicos)
+![Preview do Laboratório](assets/img/preview_lab.jpg)
 
 ---
 
