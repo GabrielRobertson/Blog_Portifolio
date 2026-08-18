@@ -3,7 +3,7 @@
 $contact_email      = $global_settings['contact_email']      ?? 'contato@gabrielrobertson.com.br';
 $contact_location   = $global_settings['contact_location']   ?? 'Juiz de Fora, MG';
 $contact_linkedin   = $global_settings['linkedin_url']       ?? 'https://www.linkedin.com/in/gabrielrobertson-s/';
-$contact_github_prof= $global_settings['github_prof_url']    ?? $global_settings['github_url'] ?? 'https://github.com/Gabrielrsc';
+$contact_github_prof= $global_settings['github_prof_url']    ?? $global_settings['github_url'] ?? 'https://github.com/GabrielRobertson';
 $freelance_cta_on   = ($global_settings['freelance_available'] ?? '1') === '1';
 ?>
 <section id="contatos" class="min-h-screen flex flex-col justify-center py-8 sm:py-16 px-2 sm:px-4 md:px-0">

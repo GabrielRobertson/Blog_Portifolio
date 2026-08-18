@@ -22,7 +22,7 @@ $freelance_on      = ($settings['freelance_available']   ?? '1') === '1';
             <!-- Badge Disponibilidade Freelance -->
             <div class="inline-flex items-center gap-2 bg-emerald-500/20 backdrop-blur-md px-4 py-2 rounded-full border border-emerald-400/40 mb-1">
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span class="text-xs font-black uppercase tracking-wider text-emerald-300">🟢 Disponível para Projetos &amp; Freelance</span>
+                <span class="text-xs font-black uppercase tracking-wider text-emerald-300">Disponível para Projetos &amp; Freelance</span>
             </div>
             <?php endif; ?>
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
@@ -107,72 +107,6 @@ $freelance_on      = ($settings['freelance_available']   ?? '1') === '1';
                 <div class="flex items-center gap-3 text-xs sm:text-sm font-bold text-white">
                     <i class="fas fa-cogs text-purple-200"></i>
                     <span>Eliminação de Gargalos Operacionais</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Foco de Atuação (3 Pilares Técnicos) -->
-    <div class="space-y-6">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <h3 class="text-xl sm:text-2xl font-black text-slate-900 flex items-center">
-                <span class="w-6 h-1 bg-<?php echo $theme_color; ?>-600 mr-3 rounded-full"></span> Meu Foco de Atuação
-            </h3>
-            <span class="text-xs sm:text-sm font-mono font-bold text-slate-400 uppercase tracking-widest">Especialidades & Ecossistema</span>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Pilar 1: Análise de Dados e BI -->
-            <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm card-hover flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl mb-4">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h4 class="text-base sm:text-lg font-bold text-slate-800 mb-2">Análise de Dados & BI</h4>
-                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-                        Transformação de dados brutos em insights estratégicos utilizando <strong>Python</strong>, <strong>SQL</strong> e dashboards dinâmicos (<strong>Power BI</strong> e <strong>Grafana</strong>).
-                    </p>
-                </div>
-                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-50">
-                    <span class="text-xs font-mono font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">Python</span>
-                    <span class="text-xs font-mono font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">SQL</span>
-                    <span class="text-xs font-mono font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">Power BI</span>
-                    <span class="text-xs font-mono font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">Grafana</span>
-                </div>
-            </div>
-
-            <!-- Pilar 2: Automação e RPA -->
-            <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm card-hover flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl mb-4">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h4 class="text-base sm:text-lg font-bold text-slate-800 mb-2">Automação & RPA</h4>
-                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-                        Criação de fluxos inteligentes com <strong>Power Automate</strong>, <strong>Power Apps</strong> e scripts avançados para eliminar gargalos manuais e acelerar decisões.
-                    </p>
-                </div>
-                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-50">
-                    <span class="text-xs font-mono font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">Power Automate</span>
-                    <span class="text-xs font-mono font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">Power Apps</span>
-                    <span class="text-xs font-mono font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">RPA</span>
-                </div>
-            </div>
-
-            <!-- Pilar 3: Inovação e Cibersegurança -->
-            <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm card-hover flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl mb-4">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h4 class="text-base sm:text-lg font-bold text-slate-800 mb-2">Inovação & Cibersegurança</h4>
-                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-                        Integração de Inteligência Artificial e alinhamento com frameworks de proteção de dados no desenvolvimento de soluções corporativas seguras.
-                    </p>
-                </div>
-                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-50">
-                    <span class="text-xs font-mono font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">Inteligência Artificial</span>
-                    <span class="text-xs font-mono font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">LGPD / InfoSec</span>
                 </div>
             </div>
         </div>

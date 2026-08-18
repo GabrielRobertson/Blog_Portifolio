@@ -59,23 +59,15 @@ $avail_status    = $settings['availability_status'] ?? 'Disponível para novos p
             Transformando desafios operacionais e analíticos em soluções sob medida para o seu negócio.
         </p>
         <?php endif; ?>
-        
-        <!-- E-MAIL DE CONTATO (DENTRO DO DIV DA FOTO E PERFIL COM QUEBRA INTELIGENTE) -->
-        <?php if (!empty($contact_email)): ?>
-        <div class="mb-4 pt-3 border-t border-slate-100 flex items-center justify-center gap-2 text-xs text-slate-600 font-medium w-full min-w-0">
-            <i class="fas fa-envelope text-indigo-500 shrink-0 text-xs"></i>
-            <a href="mailto:<?php echo htmlspecialchars($contact_email); ?>" class="hover:text-<?php echo $theme_color; ?>-600 transition-colors truncate break-all max-w-full font-mono text-[11px] sm:text-xs" title="<?php echo htmlspecialchars($contact_email); ?>">
-                <?php echo htmlspecialchars($contact_email); ?>
-            </a>
-        </div>
-        <?php endif; ?>
 
         <!-- Botão Baixar Currículo -->
+        <!-- Alteração Feita por mim em 18/08/2026 para remover o botão de download -->
+        <!--
         <a href="<?php echo htmlspecialchars($cv_url); ?>" download target="_blank" class="flex items-center justify-center gap-2 bg-slate-900 hover:bg-<?php echo $theme_color; ?>-600 text-white text-xs font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg w-full group">
             <i class="fas fa-file-pdf text-red-400 group-hover:text-white transition-colors"></i>
             <span>Baixar Currículo</span>
             <i class="fas fa-download text-[10px] opacity-70 group-hover:translate-y-0.5 transition-transform"></i>
-        </a>
+        </a> -->
 
         <!-- Links de Redes Sociais Rápidas -->
         <div class="flex justify-center items-center gap-2 mt-4 pt-3 border-t border-slate-100">
@@ -84,7 +76,7 @@ $avail_status    = $settings['availability_status'] ?? 'Disponível para novos p
             $linkedin_url = $settings['linkedin_url'] ?? 'https://www.linkedin.com/in/gabrielrobertson-s/';
             $github_url = $is_laboratorio 
                 ? ($settings['github_personal_url'] ?? $settings['github_prof_url'] ?? 'https://github.com/Gabrielrsc')
-                : ($settings['github_prof_url'] ?? 'https://github.com/Gabrielrsc');
+                : ($settings['github_prof_url'] ?? 'https://github.com/GabrielRobertson');
             $github_label = $is_laboratorio ? 'GitHub Pessoal / Experimentos' : 'GitHub Profissional';
             ?>
             <a href="<?php echo htmlspecialchars($github_url); ?>" target="_blank" title="<?php echo htmlspecialchars($github_label); ?>" class="w-8 h-8 flex items-center justify-center bg-slate-50 text-slate-500 rounded-lg hover:bg-<?php echo $theme_color; ?>-600 hover:text-white transition-all duration-300 text-xs">
