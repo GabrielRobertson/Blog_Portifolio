@@ -7,18 +7,19 @@ $action = $_GET['action'] ?? 'list';
 // Salvar / Atualizar
 if (isset($_POST['save'])) {
     $name = $_POST['name'];
+    $description = $_POST['description'] ?? '' // Alteração Feita por mim em 18/08/2026 para adicionar descrição;
     $category = $_POST['category'];
     $icon_class = $_POST['icon_class'] ?: 'fas fa-star';
     $color_class = $_POST['color_class'] ?: 'slate-500';
     $order_index = $_POST['order_index'] ?? 0;
 
     if ($id) {
-        $stmt = $pdo->prepare("UPDATE skills SET name=?, category=?, icon_class=?, color_class=?, order_index=? WHERE id=?");
-        $stmt->execute([$name, $category, $icon_class, $color_class, $order_index, $id]);
+        $stmt = $pdo->prepare("UPDATE skills SET name=?, category=?, description=?, icon_class=?, color_class=?, order_index=? WHERE id=?");
+        $stmt->execute([$name, $category, $description, $icon_class, $color_class, $order_index, $id]);
         header("Location: skills.php?msg=updated");
     } else {
-        $stmt = $pdo->prepare("INSERT INTO skills (name, category, icon_class, color_class, order_index) VALUES (?, ?, ?, ?, ?)");
-        $stmt->execute([$name, $category, $icon_class, $color_class, $order_index]);
+        $stmt = $pdo->prepare("INSERT INTO skills (name, category, description, icon_class, color_class, order_index) VALUES (?, ?, ?, ?, ?)");
+        $stmt->execute([$name, $category, $description, $icon_class, $color_class, $order_index]);
         header("Location: skills.php?msg=saved");
     }
     exit;
