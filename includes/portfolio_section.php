@@ -46,13 +46,10 @@ $portfolio_projects = $portfolio_projects_stmt->fetchAll();
 
                     <div class="flex items-center justify-between">
                         <span class="text-xs font-mono text-slate-400">Full Stack</span>
-<a href="<?php echo !empty($proj['url']) ? htmlspecialchars($proj['url']) : 'project-details.php?id=' . intval($proj['id']); ?>" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   class="inline-flex items-center gap-2 text-xs font-black text-<?php echo $theme_color; ?>-600 hover:text-<?php echo $theme_color; ?>-700 uppercase tracking-wider">
-    <span>Ver Detalhes</span>
-    <i class="fas fa-arrow-right text-xs"></i>
-</a>
+                            <a href="<?php echo htmlspecialchars($proj['project_url'] ?? '#'); ?>" target="_blank" class="inline-flex items-center gap-2 text-xs font-black text-<?php echo $theme_color; ?>-600 hover:text-<?php echo $theme_color; ?>-700 uppercase tracking-wider">
+                                <span>Ver Detalhes</span>
+                                <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
                     </div>
                 </div>
             </div>
