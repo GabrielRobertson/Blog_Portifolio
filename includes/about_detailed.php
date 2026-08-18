@@ -1,14 +1,14 @@
-<section id="about-detailed" class="py-12 px-4 md:px-0">
+<section id="about-detailed" class="py-6 sm:py-12 px-2 sm:px-4 md:px-0">
     <!-- Seção: Skills Categorizadas -->
-    <div id="hard-skills" class="min-h-screen flex flex-col justify-center mb-16 mt-0">
-        <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
-            <h2 class="text-3xl font-black text-slate-900 flex items-center">
+    <div id="hard-skills" class="min-h-screen flex flex-col justify-center mb-12 sm:mb-16 mt-0">
+        <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 sm:mb-10 gap-4">
+            <h2 class="text-2xl sm:text-3xl font-black text-slate-900 flex items-center">
                 <span class="w-6 h-1 bg-<?php echo $theme_color; ?>-600 mr-4 rounded-full"></span> Hard Skills & Competências
             </h2>
-            <span class="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest">Matriz Técnica & Ferramentas</span>
+            <span class="text-xs sm:text-sm font-mono font-bold text-slate-400 uppercase tracking-widest">Matriz Técnica & Ferramentas</span>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <?php
             // Buscar Skills e agrupar por categoria
             $skills_stmt = $pdo->query("SELECT * FROM skills ORDER BY id ASC");
@@ -20,9 +20,9 @@
             
             <?php if (!empty($grouped_skills)): ?>
                 <?php foreach ($grouped_skills as $category => $skills): ?>
-                <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex flex-col justify-between">
+                <div class="bg-white p-5 sm:p-6 rounded-3xl border border-slate-100 shadow-sm flex flex-col justify-between">
                     <div>
-                        <h3 class="text-xs font-black text-<?php echo $theme_color; ?>-600 mb-6 uppercase tracking-widest pb-3 border-b border-slate-100 flex items-center justify-between">
+                        <h3 class="text-xs sm:text-sm font-black text-<?php echo $theme_color; ?>-600 mb-6 uppercase tracking-widest pb-3 border-b border-slate-100 flex items-center justify-between">
                             <span><?php echo htmlspecialchars($category); ?></span>
                             <i class="fas fa-layer-group text-slate-300 text-sm"></i>
                         </h3>
@@ -35,11 +35,11 @@
                                         <i class="<?php echo htmlspecialchars($skill['icon_class']); ?> text-base text-<?php echo htmlspecialchars($skill['color_class']); ?> group-hover:text-white transition-colors"></i>
                                     </div>
                                     <div>
-                                        <h4 class="text-sm font-bold text-slate-800 leading-snug group-hover:text-<?php echo $theme_color; ?>-600 transition-colors">
+                                        <h4 class="text-sm sm:text-base font-bold text-slate-800 leading-snug group-hover:text-<?php echo $theme_color; ?>-600 transition-colors">
                                             <?php echo htmlspecialchars($skill['name']); ?>
                                         </h4>
                                         <?php if (!empty($skill['description'])): ?>
-                                        <p class="text-xs text-slate-500 leading-relaxed mt-1">
+                                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mt-1">
                                             <?php echo htmlspecialchars($skill['description']); ?>
                                         </p>
                                         <?php endif; ?>
@@ -62,8 +62,8 @@
 
 
     <!-- Seção: Formação -->
-    <div id="formacao" class="min-h-screen flex flex-col justify-center mb-16">
-        <h2 class="text-3xl font-black text-slate-900 mb-12 flex items-center">
+    <div id="formacao" class="min-h-screen flex flex-col justify-center mb-12 sm:mb-16">
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mb-8 sm:mb-12 flex items-center">
             <span class="w-6 h-1 bg-<?php echo $theme_color; ?>-600 mr-4 rounded-full"></span> Formação
         </h2>
 
@@ -72,7 +72,7 @@
             $edu_stmt = $pdo->query("SELECT * FROM education ORDER BY order_index ASC, id DESC");
             while ($edu = $edu_stmt->fetch()):
             ?>
-            <div class="flex gap-4 group">
+            <div class="flex gap-4 group bg-white p-5 sm:p-6 rounded-3xl border border-slate-100 shadow-sm">
                 <div class="flex-shrink-0">
                     <div class="w-12 h-12 bg-white border border-slate-100 rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-all overflow-hidden">
                         <?php if (!empty($edu['logo_url'])): ?>
@@ -83,9 +83,9 @@
                     </div>
                 </div>
                 <div>
-                    <h4 class="text-sm font-bold text-slate-800 leading-tight mb-1"><?php echo htmlspecialchars($edu['course']); ?></h4>
-                    <p class="text-xs font-bold text-<?php echo $theme_color; ?>-600 mb-1"><?php echo htmlspecialchars($edu['institution']); ?></p>
-                    <p class="text-[10px] font-mono text-slate-400 uppercase tracking-widest"><?php echo htmlspecialchars($edu['year']); ?></p>
+                    <h4 class="text-sm sm:text-base font-bold text-slate-800 leading-tight mb-1"><?php echo htmlspecialchars($edu['course']); ?></h4>
+                    <p class="text-xs sm:text-sm font-bold text-<?php echo $theme_color; ?>-600 mb-1"><?php echo htmlspecialchars($edu['institution']); ?></p>
+                    <p class="text-xs font-mono text-slate-400 uppercase tracking-widest"><?php echo htmlspecialchars($edu['year']); ?></p>
                 </div>
             </div>
             <?php endwhile; ?>
@@ -94,7 +94,7 @@
 
     <!-- Seção: Experiência / Jornada -->
     <div id="jornada" class="min-h-screen flex flex-col justify-center">
-        <h2 class="text-3xl font-black text-slate-900 mb-12 flex items-center">
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mb-8 sm:mb-12 flex items-center">
             <span class="w-6 h-1 bg-<?php echo $theme_color; ?>-600 mr-4 rounded-full"></span> Jornada
         </h2>
 
@@ -161,11 +161,11 @@
                     
                     <!-- Textos da Empresa -->
                     <div>
-                        <h3 class="text-sm font-bold text-slate-800 leading-tight"><?php echo htmlspecialchars($exp['company']); ?></h3>
+                        <h3 class="text-base sm:text-lg font-bold text-slate-800 leading-tight"><?php echo htmlspecialchars($exp['company']); ?></h3>
                         <div class="flex items-center gap-2 mt-1">
-                            <p class="text-[10px] text-<?php echo $theme_color; ?>-600 font-black uppercase tracking-wider"><?php echo $total_time; ?></p>
-                            <span class="text-slate-300 text-[9px]">•</span>
-                            <p class="text-[9px] font-mono text-slate-400 uppercase tracking-widest">
+                            <p class="text-xs text-<?php echo $theme_color; ?>-600 font-bold uppercase tracking-wider"><?php echo $total_time; ?></p>
+                            <span class="text-slate-300 text-xs">•</span>
+                            <p class="text-xs font-mono text-slate-400 uppercase tracking-widest">
                                 <?php echo htmlspecialchars($exp['start_date']); ?> — <?php echo htmlspecialchars($exp['end_date']); ?>
                             </p>
                         </div>
@@ -173,39 +173,41 @@
                 </div>
 
                 <!-- 2. Linha do Tempo dos Cargos -->
-                <!-- ml-6 (24px) posiciona a borda exatamente no centro do logo acima -->
-                <!-- space-y-6 reduz o espaço entre os cargos -->
-                <div class="ml-6 border-l-2 border-slate-200 pl-8 pt-5 pb-2 space-y-6 relative">
+                <div class="ml-6 border-l-2 border-slate-200 pl-6 sm:pl-8 pt-5 pb-2 space-y-6 relative">
                     
                     <!-- Cargo Principal -->
                     <div class="relative">
                         <!-- Bolinha Colorida -->
-                        <div class="absolute top-1.5 w-3 h-3 bg-<?php echo $theme_color; ?>-500 rounded-full border-2 border-white shadow-sm z-20" style="left: -39px;"></div>
+                        <div class="absolute top-1.5 w-3 h-3 bg-<?php echo $theme_color; ?>-500 rounded-full border-2 border-white shadow-sm z-20" style="left: -31px;"></div>
                         
-                        <h4 class="text-sm font-bold text-slate-800"><?php echo htmlspecialchars($exp['role']); ?></h4>
-                        <p class="text-[9px] font-mono text-slate-400 mb-2 uppercase tracking-tighter">
+                        <h4 class="text-sm sm:text-base font-bold text-slate-800"><?php echo htmlspecialchars($exp['role']); ?></h4>
+                        <p class="text-xs font-mono text-slate-400 mb-2 uppercase tracking-tighter">
                             <?php echo htmlspecialchars($exp['start_date']); ?> — <?php echo htmlspecialchars($exp['end_date']); ?> 
-                            <span class="ml-1 text-<?php echo $theme_color; ?>-400">• <?php echo formatInterval(parseDate($exp['start_date']), parseDate($exp['end_date'])); ?></span>
+                            <span class="ml-1 text-<?php echo $theme_color; ?>-600">• <?php echo formatInterval(parseDate($exp['start_date']), parseDate($exp['end_date'])); ?></span>
                         </p>
-                        <p class="text-xs text-slate-500 leading-relaxed max-w-2xl">
+                        <?php if (!empty($exp['description'])): ?>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl">
                             <?php echo nl2br(htmlspecialchars($exp['description'])); ?>
                         </p>
+                        <?php endif; ?>
                     </div>
 
                     <!-- Sub-cargos -->
                     <?php foreach ($sub_roles as $sub): ?>
                     <div class="relative">
                         <!-- Bolinha Colorida -->
-                        <div class="absolute top-1.5 w-3 h-3 bg-<?php echo $theme_color; ?>-500 rounded-full border-2 border-white shadow-sm z-20" style="left: -39px;"></div>
+                        <div class="absolute top-1.5 w-3 h-3 bg-<?php echo $theme_color; ?>-500 rounded-full border-2 border-white shadow-sm z-20" style="left: -31px;"></div>
                         
-                        <h4 class="text-sm font-bold text-slate-700"><?php echo htmlspecialchars($sub['role']); ?></h4>
-                        <p class="text-[9px] font-mono text-slate-400 mb-2 uppercase tracking-tighter">
+                        <h4 class="text-sm sm:text-base font-bold text-slate-700"><?php echo htmlspecialchars($sub['role']); ?></h4>
+                        <p class="text-xs font-mono text-slate-400 mb-2 uppercase tracking-tighter">
                             <?php echo htmlspecialchars($sub['start_date']); ?> — <?php echo htmlspecialchars($sub['end_date']); ?>
-                            <span class="ml-1 text-slate-400">• <?php echo formatInterval(parseDate($sub['start_date']), parseDate($sub['end_date'])); ?></span>
+                            <span class="ml-1 text-slate-500">• <?php echo formatInterval(parseDate($sub['start_date']), parseDate($sub['end_date'])); ?></span>
                         </p>
-                        <p class="text-xs text-slate-500 leading-relaxed max-w-2xl">
+                        <?php if (!empty($sub['description'])): ?>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl">
                             <?php echo nl2br(htmlspecialchars($sub['description'])); ?>
                         </p>
+                        <?php endif; ?>
                     </div>
                     <?php endforeach; ?>
                     

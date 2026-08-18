@@ -14,7 +14,7 @@ include 'includes/head.php';
 include 'includes/sidebar.php'; 
 ?>
 
-<div id="main-content" class="flex-grow p-4 md:p-8 flex flex-col justify-between min-h-screen min-w-0 space-y-12">
+<div id="main-content" class="flex-grow p-3 sm:p-6 lg:p-8 flex flex-col justify-between min-h-screen min-w-0 space-y-8 sm:space-y-12">
     <div class="space-y-12">
         <!-- 1. Sobre Mim -->
         <?php include 'includes/header_profile.php'; ?>

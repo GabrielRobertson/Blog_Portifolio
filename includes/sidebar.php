@@ -6,25 +6,53 @@ while ($row = $settings_stmt->fetch()) {
     $settings[$row['setting_key']] = $row['setting_value'];
 }
 
-$profile_name = $settings['profile_name'] ?? 'Gabriel Robertson';
-$profile_role = $settings['profile_role'] ?? 'Analista Técnico de Produção';
-$profile_image = $settings['profile_image'] ?? 'assets/img/gabriel-profile.png';
-$cv_url = $settings['cv_url'] ?? 'assets/curriculo.pdf';
+$profile_name    = $settings['profile_name'] ?? 'Gabriel Robertson';
+$profile_role    = $settings['profile_role'] ?? 'Analista Técnico de Produção';
+$profile_image   = $settings['profile_image'] ?? 'assets/img/gabriel-profile.png';
+$cv_url          = $settings['cv_url'] ?? 'assets/curriculo.pdf';
+$contact_email   = $settings['contact_email'] ?? 'contato@gabrielrobertson.com.br';
+$theme_color     = $settings['theme_color'] ?? 'indigo';
 ?>
-<aside id="sidebar" class="flex-shrink-0 w-full lg:w-80 bg-slate-50 p-5 lg:p-6 flex flex-col self-start lg:sticky lg:top-0 h-auto lg:h-screen overflow-y-auto border-b lg:border-b-0 lg:border-r border-slate-200 z-20 min-w-0">
+
+<!-- CABEÇALHO SUPERIOR COMPACTO COM HAMBÚRGUER (EXIBIDO APENAS EM TELAS PEQUENAS < lg) -->
+<div class="lg:hidden flex items-center justify-between p-4 bg-slate-900 text-white sticky top-0 z-50 shadow-md w-full">
+    <a href="index.php" class="flex items-center gap-3 min-w-0">
+        <img src="<?php echo htmlspecialchars($profile_image); ?>" alt="Foto de Perfil" class="w-10 h-10 rounded-xl object-cover border-2 border-indigo-500 shrink-0">
+        <div class="truncate">
+            <h2 class="text-sm font-bold leading-tight truncate text-white"><?php echo htmlspecialchars($profile_name); ?></h2>
+            <p class="text-[11px] text-slate-400 font-medium truncate"><?php echo htmlspecialchars($profile_role); ?></p>
+        </div>
+    </a>
+    <button id="mobile-menu-btn" class="w-10 h-10 rounded-xl bg-slate-800 text-slate-200 hover:bg-slate-700 flex items-center justify-center text-lg transition-colors shrink-0 focus:outline-none" aria-label="Abrir Menu">
+        <i id="mobile-menu-icon" class="fas fa-bars"></i>
+    </button>
+</div>
+
+<!-- SIDEBAR DA PÁGINA (OCULTA NO MOBILE ATÉ O CLIQUE NO HAMBÚRGUER, VISÍVEL SEMPRE EM lg:) -->
+<aside id="sidebar" class="hidden lg:flex flex-shrink-0 w-full lg:w-80 bg-slate-50 p-4 sm:p-5 lg:p-6 flex-col self-start lg:sticky lg:top-0 h-auto lg:h-screen overflow-y-auto border-b lg:border-b-0 lg:border-r border-slate-200 z-40 min-w-0">
     
-    <!-- CAMPO DE CURRÍCULO -->
+    <!-- CARD PRINCIPAL DO PERFIL -->
     <div class="bg-white p-5 sm:p-6 rounded-3xl border border-slate-100 shadow-sm mb-6 text-center w-full min-w-0">
         <div class="relative inline-block mb-4">
-            <div class="w-28 h-28 rounded-2xl overflow-hidden border-4 border-slate-50 shadow-md mx-auto ring-1 ring-slate-200">
+            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-4 border-slate-50 shadow-md mx-auto ring-1 ring-slate-200">
                 <img src="<?php echo htmlspecialchars($profile_image); ?>" alt="Foto de Perfil <?php echo htmlspecialchars($profile_name); ?>" class="w-full h-full object-cover object-top">
             </div>
             <div class="absolute -bottom-1 -right-1 bg-emerald-500 w-5 h-5 rounded-full border-2 border-white shadow-sm" title="Disponível para novos projetos"></div>
         </div>
         
-        <h2 class="text-xl sm:text-2xl text-slate-800 font-bold mb-1 leading-snug break-words px-1"><?php echo htmlspecialchars($profile_name); ?></h2>
-        <p class="text-xs text-slate-500 font-medium mb-5 leading-normal break-words px-1"><?php echo htmlspecialchars($profile_role); ?></p>
+        <h2 class="text-lg sm:text-xl font-bold text-slate-800 mb-1 leading-snug break-words px-1"><?php echo htmlspecialchars($profile_name); ?></h2>
+        <p class="text-xs text-slate-500 font-medium mb-4 leading-normal break-words px-1"><?php echo htmlspecialchars($profile_role); ?></p>
         
+        <!-- E-MAIL DE CONTATO (DENTRO DO DIV DA FOTO E PERFIL COM QUEBRA INTELIGENTE) -->
+        <?php if (!empty($contact_email)): ?>
+        <div class="mb-4 pt-3 border-t border-slate-100 flex items-center justify-center gap-2 text-xs text-slate-600 font-medium w-full min-w-0">
+            <i class="fas fa-envelope text-indigo-500 shrink-0 text-xs"></i>
+            <a href="mailto:<?php echo htmlspecialchars($contact_email); ?>" class="hover:text-<?php echo $theme_color; ?>-600 transition-colors truncate break-all max-w-full font-mono text-[11px] sm:text-xs" title="<?php echo htmlspecialchars($contact_email); ?>">
+                <?php echo htmlspecialchars($contact_email); ?>
+            </a>
+        </div>
+        <?php endif; ?>
+
         <!-- Botão Baixar Currículo -->
         <a href="<?php echo htmlspecialchars($cv_url); ?>" download target="_blank" class="flex items-center justify-center gap-2 bg-slate-900 hover:bg-<?php echo $theme_color; ?>-600 text-white text-xs font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg w-full group">
             <i class="fas fa-file-pdf text-red-400 group-hover:text-white transition-colors"></i>
@@ -64,40 +92,40 @@ $cv_url = $settings['cv_url'] ?? 'assets/curriculo.pdf';
     <!-- MENU LATERAL DE NAVEGAÇÃO -->
     <nav class="flex flex-col flex-grow justify-between space-y-6">
         <div>
-            <h3 class="text-<?php echo $theme_color; ?>-600 uppercase font-bold text-[10px] tracking-[0.2em] mb-3 px-2">Navegação Principal</h3>
+            <h3 class="text-<?php echo $theme_color; ?>-600 uppercase font-bold text-xs tracking-[0.15em] mb-3 px-2">Navegação Principal</h3>
             <ul class="space-y-1">
                 <li>
-                    <a href="index.php#sobre-mim" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:text-<?php echo $theme_color; ?>-600 hover:bg-white border border-transparent hover:border-slate-100 transition-all">
+                    <a href="index.php#sobre-mim" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-<?php echo $theme_color; ?>-600 hover:bg-white border border-transparent hover:border-slate-100 transition-all">
                         <i class="fas fa-user w-4 text-center text-slate-400"></i>
                         <span>Sobre Mim</span>
                     </a>
                 </li>
                 <li>
-                    <a href="index.php#hard-skills" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:text-<?php echo $theme_color; ?>-600 hover:bg-white border border-transparent hover:border-slate-100 transition-all">
+                    <a href="index.php#hard-skills" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-<?php echo $theme_color; ?>-600 hover:bg-white border border-transparent hover:border-slate-100 transition-all">
                         <i class="fas fa-code w-4 text-center text-slate-400"></i>
                         <span>Hard Skills</span>
                     </a>
                 </li>
                 <li>
-                    <a href="index.php#formacao" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:text-<?php echo $theme_color; ?>-600 hover:bg-white border border-transparent hover:border-slate-100 transition-all">
+                    <a href="index.php#formacao" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-<?php echo $theme_color; ?>-600 hover:bg-white border border-transparent hover:border-slate-100 transition-all">
                         <i class="fas fa-graduation-cap w-4 text-center text-slate-400"></i>
                         <span>Formação</span>
                     </a>
                 </li>
                 <li>
-                    <a href="index.php#jornada" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:text-<?php echo $theme_color; ?>-600 hover:bg-white border border-transparent hover:border-slate-100 transition-all">
+                    <a href="index.php#jornada" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-<?php echo $theme_color; ?>-600 hover:bg-white border border-transparent hover:border-slate-100 transition-all">
                         <i class="fas fa-briefcase w-4 text-center text-slate-400"></i>
                         <span>Jornada</span>
                     </a>
                 </li>
                 <li>
-                    <a href="index.php#portfolio" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:text-<?php echo $theme_color; ?>-600 hover:bg-white border border-transparent hover:border-slate-100 transition-all">
+                    <a href="index.php#portfolio" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-<?php echo $theme_color; ?>-600 hover:bg-white border border-transparent hover:border-slate-100 transition-all">
                         <i class="fas fa-folder-open w-4 text-center text-slate-400"></i>
                         <span>Portfólio</span>
                     </a>
                 </li>
                 <li>
-                    <a href="index.php#contatos" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:text-<?php echo $theme_color; ?>-600 hover:bg-white border border-transparent hover:border-slate-100 transition-all">
+                    <a href="index.php#contatos" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-<?php echo $theme_color; ?>-600 hover:bg-white border border-transparent hover:border-slate-100 transition-all">
                         <i class="fas fa-paper-plane w-4 text-center text-slate-400"></i>
                         <span>Contatos</span>
                     </a>
@@ -106,25 +134,54 @@ $cv_url = $settings['cv_url'] ?? 'assets/curriculo.pdf';
 
             <!-- DESTAQUE LABORATÓRIO -->
             <div class="mt-6 pt-4 border-t border-slate-200">
-                <h3 class="text-purple-600 uppercase font-bold text-[10px] tracking-[0.2em] mb-3 px-2">Espaço Pessoal</h3>
-                <a href="laboratorio.php" class="flex items-center justify-between px-4 py-3 rounded-2xl bg-gradient-to-r from-purple-900 to-indigo-900 text-white text-xs font-bold shadow-md hover:shadow-lg transition-all hover:scale-[1.02] group">
+                <h3 class="text-purple-600 uppercase font-bold text-xs tracking-[0.15em] mb-3 px-2">Espaço Pessoal</h3>
+                <a href="laboratorio.php" class="flex items-center justify-between px-4 py-3 rounded-2xl bg-gradient-to-r from-purple-900 to-indigo-900 text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all hover:scale-[1.02] group">
                     <div class="flex items-center gap-3">
                         <div class="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center backdrop-blur-sm group-hover:rotate-12 transition-transform">
                             <i class="fas fa-flask text-purple-300"></i>
                         </div>
                         <div>
-                            <span class="block leading-none text-white">Laboratório</span>
-                            <span class="text-[9px] font-normal text-purple-200">Hobbies & Experimentos</span>
+                            <span class="block leading-none text-white font-bold">Laboratório</span>
+                            <span class="text-[10px] sm:text-xs font-normal text-purple-200">Hobbies & Experimentos</span>
                         </div>
                     </div>
-                    <i class="fas fa-chevron-right text-[10px] text-purple-300 group-hover:translate-x-1 transition-transform"></i>
+                    <i class="fas fa-chevron-right text-xs text-purple-300 group-hover:translate-x-1 transition-transform"></i>
                 </a>
             </div>
         </div>
 
         <div class="pt-4 border-t border-slate-200 text-center">
-            <p class="text-[10px] text-slate-400 font-mono">© <?php echo date("Y"); ?> <?php echo htmlspecialchars($profile_name); ?></p>
+            <p class="text-xs text-slate-400 font-mono">© <?php echo date("Y"); ?> <?php echo htmlspecialchars($profile_name); ?></p>
         </div>
     </nav>
 </aside>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menuIcon = document.getElementById('mobile-menu-icon');
+    const sidebar = document.getElementById('sidebar');
+
+    if (menuBtn && sidebar) {
+        menuBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('hidden');
+            if (sidebar.classList.contains('hidden')) {
+                menuIcon.className = 'fas fa-bars';
+            } else {
+                menuIcon.className = 'fas fa-times text-indigo-400';
+            }
+        });
+
+        // Fechar menu mobile automaticamente ao clicar em qualquer link de navegação
+        const navLinks = sidebar.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth < 1024) {
+                    sidebar.classList.add('hidden');
+                    if (menuIcon) menuIcon.className = 'fas fa-bars';
+                }
+            });
+        });
+    }
+});
+</script>

@@ -7,12 +7,18 @@ if (!isset($_SESSION['logged_in']) && basename($_SERVER['PHP_SELF']) != 'login.p
 }
 
 
-// Buscar cor do tema global
+// Buscar cor do tema global e contagem de mensagens não lidas
 $theme_color = 'indigo';
+$unread_msg_count = 0;
 if (isset($pdo)) {
-    $stmt = $pdo->query("SELECT setting_value FROM settings WHERE setting_key = 'theme_color'");
-    if ($row = $stmt->fetch()) {
-        $theme_color = $row['setting_value'];
+    try {
+        $stmt = $pdo->query("SELECT setting_value FROM settings WHERE setting_key = 'theme_color'");
+        if ($row = $stmt->fetch()) {
+            $theme_color = $row['setting_value'];
+        }
+        $unread_msg_count = (int)$pdo->query("SELECT COUNT(*) FROM contact_messages WHERE status = 'unread' OR status IS NULL")->fetchColumn();
+    } catch (Exception $e) {
+        // Tabela pode não existir em primeiro acesso
     }
 }
 $current_page = basename($_SERVER['PHP_SELF']);
@@ -50,6 +56,14 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <nav class="flex flex-wrap items-center gap-1 text-xs font-semibold">
                 <a href="index.php" class="px-3 py-2 rounded-lg transition-all flex items-center gap-1.5 <?php echo $current_page == 'index.php' ? 'bg-indigo-600 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white'; ?>">
                     <i class="fas fa-chart-pie text-xs"></i> <span>Dashboard</span>
+                </a>
+                <a href="messages.php" class="px-3 py-2 rounded-lg transition-all flex items-center gap-1.5 relative <?php echo $current_page == 'messages.php' ? 'bg-indigo-600 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white'; ?>">
+                    <i class="fas fa-envelope text-xs"></i> <span>Mensagens</span>
+                    <?php if ($unread_msg_count > 0): ?>
+                        <span class="ml-1 bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded-full animate-pulse">
+                            <?php echo $unread_msg_count; ?>
+                        </span>
+                    <?php endif; ?>
                 </a>
                 <a href="projects.php" class="px-3 py-2 rounded-lg transition-all flex items-center gap-1.5 <?php echo in_array($current_page, ['projects.php', 'edit_project.php']) ? 'bg-indigo-600 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white'; ?>">
                     <i class="fas fa-folder-open text-xs"></i> <span>Portfólio</span>

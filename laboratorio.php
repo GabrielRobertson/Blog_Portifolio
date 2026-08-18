@@ -14,10 +14,10 @@ include 'includes/head.php';
 include 'includes/sidebar.php'; 
 ?>
 
-<div id="main-content" class="flex-grow p-4 md:p-8 flex flex-col justify-between min-h-screen min-w-0 space-y-12">
-    <div class="space-y-12">
+<div id="main-content" class="flex-grow p-3 sm:p-6 lg:p-8 flex flex-col justify-between min-h-screen min-w-0 space-y-8 sm:space-y-12">
+    <div class="space-y-8 sm:space-y-12">
         <!-- Header do Laboratório -->
-        <header class="py-12 px-8 bg-gradient-to-br from-purple-900 via-indigo-950 to-slate-900 rounded-3xl text-white shadow-xl relative overflow-hidden">
+        <header class="py-8 sm:py-12 px-5 sm:px-8 lg:px-12 bg-gradient-to-br from-purple-900 via-indigo-950 to-slate-900 rounded-3xl text-white shadow-xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
             <div class="absolute bottom-0 left-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"></div>
 
