@@ -7,7 +7,7 @@ $action = $_GET['action'] ?? 'list';
 // Salvar / Atualizar
 if (isset($_POST['save'])) {
     $name = $_POST['name'];
-    $description = $_POST['description'] ?? '' // Alteração Feita por mim em 18/08/2026 para adicionar descrição;
+    $description = $_POST['description'] ?? ''; // Alteração Feita por mim em 18/08/2026 para adicionar descrição;
     $category = $_POST['category'];
     $icon_class = $_POST['icon_class'] ?: 'fas fa-star';
     $color_class = $_POST['color_class'] ?: 'slate-500';
