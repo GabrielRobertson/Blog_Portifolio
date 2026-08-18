@@ -12,6 +12,8 @@ $profile_image   = $settings['profile_image'] ?? 'assets/img/gabriel-profile.png
 $cv_url          = $settings['cv_url'] ?? 'assets/curriculo.pdf';
 $contact_email   = $settings['contact_email'] ?? 'contato@gabrielrobertson.com.br';
 $theme_color     = $settings['theme_color'] ?? 'indigo';
+$freelance_on    = ($settings['freelance_available'] ?? '1') === '1';
+$avail_status    = $settings['availability_status'] ?? 'Disponível para novos projetos';
 ?>
 
 <!-- CABEÇALHO SUPERIOR COMPACTO COM HAMBÚRGUER (EXIBIDO APENAS EM TELAS PEQUENAS < lg) -->
@@ -37,11 +39,26 @@ $theme_color     = $settings['theme_color'] ?? 'indigo';
             <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-4 border-slate-50 shadow-md mx-auto ring-1 ring-slate-200">
                 <img src="<?php echo htmlspecialchars($profile_image); ?>" alt="Foto de Perfil <?php echo htmlspecialchars($profile_name); ?>" class="w-full h-full object-cover object-top">
             </div>
-            <div class="absolute -bottom-1 -right-1 bg-emerald-500 w-5 h-5 rounded-full border-2 border-white shadow-sm" title="Disponível para novos projetos"></div>
+            <!-- Indicador de disponibilidade dinâmico -->
+            <?php if ($freelance_on): ?>
+            <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                <span class="inline-flex items-center gap-1.5 bg-emerald-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md">
+                    <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                    Disponível para Freelance
+                </span>
+            </div>
+            <?php else: ?>
+            <div class="absolute -bottom-1 -right-1 bg-slate-400 w-5 h-5 rounded-full border-2 border-white shadow-sm" title="<?php echo htmlspecialchars($avail_status); ?>"></div>
+            <?php endif; ?>
         </div>
         
         <h2 class="text-lg sm:text-xl font-bold text-slate-800 mb-1 leading-snug break-words px-1"><?php echo htmlspecialchars($profile_name); ?></h2>
-        <p class="text-xs text-slate-500 font-medium mb-4 leading-normal break-words px-1"><?php echo htmlspecialchars($profile_role); ?></p>
+        <p class="text-xs text-slate-500 font-medium mb-2 leading-normal break-words px-1"><?php echo htmlspecialchars($profile_role); ?></p>
+        <?php if ($freelance_on): ?>
+        <p class="text-[10px] text-indigo-500 font-semibold italic leading-snug px-1 mb-3">
+            Transformando desafios operacionais e analíticos em soluções sob medida para o seu negócio.
+        </p>
+        <?php endif; ?>
         
         <!-- E-MAIL DE CONTATO (DENTRO DO DIV DA FOTO E PERFIL COM QUEBRA INTELIGENTE) -->
         <?php if (!empty($contact_email)): ?>

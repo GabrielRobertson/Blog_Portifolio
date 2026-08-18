@@ -1,9 +1,10 @@
 <?php
 // Buscar e-mail e dados de contato das configurações se existirem
-$contact_email = $global_settings['contact_email'] ?? 'contato@gabrielrobertson.com.br';
-$contact_location = $global_settings['contact_location'] ?? 'Juiz de Fora, MG';
-$contact_linkedin = $global_settings['linkedin_url'] ?? 'https://www.linkedin.com/in/gabrielrobertson-s/';
-$contact_github_prof = $global_settings['github_prof_url'] ?? $global_settings['github_url'] ?? 'https://github.com/Gabrielrsc';
+$contact_email      = $global_settings['contact_email']      ?? 'contato@gabrielrobertson.com.br';
+$contact_location   = $global_settings['contact_location']   ?? 'Juiz de Fora, MG';
+$contact_linkedin   = $global_settings['linkedin_url']       ?? 'https://www.linkedin.com/in/gabrielrobertson-s/';
+$contact_github_prof= $global_settings['github_prof_url']    ?? $global_settings['github_url'] ?? 'https://github.com/Gabrielrsc';
+$freelance_cta_on   = ($global_settings['freelance_available'] ?? '1') === '1';
 ?>
 <section id="contatos" class="min-h-screen flex flex-col justify-center py-8 sm:py-16 px-2 sm:px-4 md:px-0">
     <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 sm:mb-12 gap-4">
@@ -116,6 +117,44 @@ $contact_github_prof = $global_settings['github_prof_url'] ?? $global_settings['
             </form>
         </div>
     </div>
+
+    <?php if ($freelance_cta_on): ?>
+    <!-- CTA FREELANCE -->
+    <div class="mt-10 relative overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 rounded-3xl p-8 sm:p-10 text-white shadow-2xl">
+        <!-- Orbs decorativos -->
+        <div class="absolute -top-16 -right-16 w-64 h-64 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-16 -left-16 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div class="flex-1">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Disponível para novos projetos
+                </div>
+                <h3 class="text-xl sm:text-2xl font-black text-white mb-3 leading-snug">
+                    Tem um projeto em mente ou precisa otimizar os processos da sua empresa?
+                </h3>
+                <p class="text-sm text-slate-300 leading-relaxed max-w-xl">
+                    Estou disponível para <strong class="text-white">contratos freelance</strong>, <strong class="text-white">consultorias</strong> e
+                    <strong class="text-white">desenvolvimento de soluções sob medida</strong>. Vamos conversar sobre o seu desafio?
+                </p>
+            </div>
+            <!-- Botões de Ação -->
+            <div class="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
+                <a href="#contact-form" class="inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 px-6 rounded-xl text-sm transition-all shadow-lg hover:shadow-indigo-500/30 hover:-translate-y-0.5">
+                    <i class="fas fa-paper-plane text-xs"></i>
+                    Enviar Mensagem
+                </a>
+                <a href="mailto:<?php echo htmlspecialchars($contact_email); ?>" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-bold py-3.5 px-6 rounded-xl text-sm transition-all">
+                    <i class="fas fa-envelope text-xs"></i>
+                    <?php echo htmlspecialchars($contact_email); ?>
+                </a>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
 </section>
 
 <script>

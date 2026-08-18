@@ -13,11 +13,12 @@ $success = "";
 
 if (isset($_POST['save_customization'])) {
     $updates = [
-        'theme_color' => $_POST['theme_color'],
-        'availability_status' => $_POST['availability_status'],
-        'linkedin_url' => trim($_POST['linkedin_url'] ?? ''),
-        'github_prof_url' => trim($_POST['github_prof_url'] ?? ''),
-        'github_personal_url' => trim($_POST['github_personal_url'] ?? '')
+        'theme_color'        => $_POST['theme_color'],
+        'availability_status'=> $_POST['availability_status'],
+        'freelance_available' => isset($_POST['freelance_available']) ? '1' : '0',
+        'linkedin_url'       => trim($_POST['linkedin_url'] ?? ''),
+        'github_prof_url'    => trim($_POST['github_prof_url'] ?? ''),
+        'github_personal_url'=> trim($_POST['github_personal_url'] ?? '')
     ];
 
     foreach ($updates as $key => $val) {
@@ -129,11 +130,36 @@ $colors = [
                     </div>
                 </div>
 
+                <!-- Toggle: Disponibilidade Freelance -->
                 <div class="pt-4 border-t border-slate-100">
+                    <?php $freelance_on = ($settings['freelance_available'] ?? '1') === '1'; ?>
+                    <div class="flex items-start justify-between gap-4 mb-5 p-5 rounded-2xl border-2 transition-all <?php echo $freelance_on ? 'bg-emerald-50 border-emerald-300' : 'bg-slate-50 border-slate-200'; ?>">
+                        <div class="flex-1">
+                            <label for="toggle-freelance" class="flex items-center gap-3 cursor-pointer">
+                                <span class="text-sm font-bold <?php echo $freelance_on ? 'text-emerald-800' : 'text-slate-600'; ?>">
+                                    <i class="fas <?php echo $freelance_on ? 'fa-toggle-on text-emerald-500' : 'fa-toggle-off text-slate-400'; ?> mr-2 text-xl"></i>
+                                    Disponibilidade para Freelance & Projetos
+                                </span>
+                            </label>
+                            <p class="text-xs mt-1 <?php echo $freelance_on ? 'text-emerald-600' : 'text-slate-400'; ?>">
+                                <?php echo $freelance_on 
+                                    ? '🟢 Ativo — Badge de disponibilidade visível no site e seção de serviços exibida.' 
+                                    : '⚫ Desativado — Badge e seção de serviços freelance ocultados do site.'; ?>
+                            </p>
+                        </div>
+                        <!-- Toggle Switch Visual -->
+                        <label for="toggle-freelance" class="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
+                            <input type="checkbox" id="toggle-freelance" name="freelance_available" class="sr-only peer" <?php echo $freelance_on ? 'checked' : ''; ?>>
+                            <div class="w-14 h-7 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-7 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-emerald-500 shadow-inner"></div>
+                        </label>
+                    </div>
+
+                    <!-- Status de disponibilidade (texto da bolinha sidebar) -->
                     <label class="block text-sm font-semibold text-gray-700 mb-2">
-                        <i class="fas fa-circle text-emerald-500 text-xs mr-2"></i> Status de Disponibilidade (Bolinha Verde)
+                        <i class="fas fa-circle text-emerald-500 text-xs mr-2"></i> Texto do Status (exibido no tooltip da bolinha)
                     </label>
                     <input type="text" name="availability_status" value="<?php echo htmlspecialchars($settings['availability_status'] ?? 'Disponível para novos projetos'); ?>" class="w-full p-3 border rounded-lg text-sm" required>
+                    <p class="text-xs text-slate-400 mt-1">Este texto aparece no tooltip quando o cursor passa sobre a bolinha verde na sidebar.</p>
                 </div>
             </div>
         </div>

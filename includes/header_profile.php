@@ -9,6 +9,7 @@ $s_traj_p2         = $settings['about_trajectory_p2']    ?? '';
 $s_stat1           = $settings['about_stat1']            ?? '+10 Anos de Vivência Industrial';
 $s_stat2           = $settings['about_stat2']            ?? 'Graduado em ADS';
 $s_mission         = $settings['about_mission_text']     ?? '';
+$freelance_on      = ($settings['freelance_available']   ?? '1') === '1';
 ?>
 <section id="sobre-mim" class="min-h-screen py-6 sm:py-12 px-2 sm:px-4 md:px-0 flex flex-col justify-center">
     <!-- Hero / Headline Principal -->
@@ -17,6 +18,13 @@ $s_mission         = $settings['about_mission_text']     ?? '';
         <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
 
         <div class="relative z-10 max-w-4xl space-y-4 sm:space-y-6">
+            <?php if ($freelance_on): ?>
+            <!-- Badge Disponibilidade Freelance -->
+            <div class="inline-flex items-center gap-2 bg-emerald-500/20 backdrop-blur-md px-4 py-2 rounded-full border border-emerald-400/40 mb-1">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="text-xs font-black uppercase tracking-wider text-emerald-300">🟢 Disponível para Projetos &amp; Freelance</span>
+            </div>
+            <?php endif; ?>
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
                 <span class="text-xs font-bold uppercase tracking-wider text-emerald-300"><?php echo htmlspecialchars($s_badge); ?></span>
@@ -169,5 +177,118 @@ $s_mission         = $settings['about_mission_text']     ?? '';
             </div>
         </div>
     </div>
+
+    <?php if ($freelance_on): ?>
+    <!-- ===== SEÇÃO: SERVIÇOS FREELANCE & SOLUÇÕES SOB MEDIDA ===== -->
+    <div class="mt-10 sm:mt-14">
+        <!-- Cabeçalho da Seção -->
+        <div class="mb-8 text-center">
+            <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full mb-4">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                Freelance &amp; Contratações
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-black text-slate-900 mb-3">
+                Serviços Freelance &amp; <span class="text-indigo-600">Soluções Sob Medida</span>
+            </h3>
+            <p class="text-sm sm:text-base text-slate-500 max-w-2xl mx-auto">
+                Transformando desafios operacionais e analíticos em soluções práticas e orientadas a resultado. Atuação sob contrato, consultoria ou projeto.
+            </p>
+        </div>
+
+        <!-- Grid de 4 Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+            <!-- Card 1: Análise de Dados & BI -->
+            <div class="group relative bg-white p-6 sm:p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between">
+                <div class="absolute top-0 right-0 w-40 h-40 bg-blue-50 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-500"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 text-white flex items-center justify-center text-2xl shadow-md">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-blue-500 block">Pilar 01</span>
+                            <h4 class="text-base sm:text-lg font-black text-slate-900 leading-tight">Análise de Dados &amp; Dashboards de BI</h4>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                        Desenvolvimento de dashboards interativos no <strong>Power BI</strong> ou <strong>Grafana</strong>, modelagem de dados (<strong>SQL, Python</strong>) e criação de visões estratégicas para tomadas de decisão rápidas e <em>data-driven</em>.
+                    </p>
+                    <div class="flex items-start gap-2 text-xs text-blue-700 bg-blue-50 rounded-xl p-3 border border-blue-100">
+                        <i class="fas fa-bullseye mt-0.5 shrink-0"></i>
+                        <span><strong>Para quem:</strong> Empresas ou gestores com dados espalhados (Excel, ERPs) que precisam centralizá-los em relatórios automáticos.</span>
+                    </div>
+                </div>
+                <div class="relative z-10 flex flex-wrap gap-1.5 mt-5 pt-4 border-t border-slate-100">
+                    <span class="text-xs font-mono font-bold bg-blue-100 text-blue-700 px-2.5 py-1 rounded-md">Power BI</span>
+                    <span class="text-xs font-mono font-bold bg-blue-100 text-blue-700 px-2.5 py-1 rounded-md">Grafana</span>
+                    <span class="text-xs font-mono font-bold bg-blue-100 text-blue-700 px-2.5 py-1 rounded-md">SQL</span>
+                    <span class="text-xs font-mono font-bold bg-blue-100 text-blue-700 px-2.5 py-1 rounded-md">Python</span>
+                </div>
+            </div>
+
+            <!-- Card 2: Automação & RPA -->
+            <div class="group relative bg-white p-6 sm:p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between">
+                <div class="absolute top-0 right-0 w-40 h-40 bg-purple-50 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-500"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-700 text-white flex items-center justify-center text-2xl shadow-md">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-purple-500 block">Pilar 02</span>
+                            <h4 class="text-base sm:text-lg font-black text-slate-900 leading-tight">Automação de Processos &amp; RPA</h4>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                        Criação de fluxos automatizados com <strong>Power Automate</strong>, <strong>Power Apps</strong> e scripts em <strong>Python</strong> para eliminar tarefas manuais repetitivas, integrações de sistemas e envio automático de relatórios.
+                    </p>
+                    <div class="flex items-start gap-2 text-xs text-purple-700 bg-purple-50 rounded-xl p-3 border border-purple-100">
+                        <i class="fas fa-bullseye mt-0.5 shrink-0"></i>
+                        <span><strong>Para quem:</strong> Negócios que perdem tempo com rotinas manuais, preenchimento repetitivo de planilhas ou processos burocráticos.</span>
+                    </div>
+                </div>
+                <div class="relative z-10 flex flex-wrap gap-1.5 mt-5 pt-4 border-t border-slate-100">
+                    <span class="text-xs font-mono font-bold bg-purple-100 text-purple-700 px-2.5 py-1 rounded-md">Power Automate</span>
+                    <span class="text-xs font-mono font-bold bg-purple-100 text-purple-700 px-2.5 py-1 rounded-md">Power Apps</span>
+                    <span class="text-xs font-mono font-bold bg-purple-100 text-purple-700 px-2.5 py-1 rounded-md">Python</span>
+                    <span class="text-xs font-mono font-bold bg-purple-100 text-purple-700 px-2.5 py-1 rounded-md">RPA</span>
+                </div>
+            </div>
+
+            <!-- Card 3: Desenvolvimento Web -->
+            <div class="group relative bg-white p-6 sm:p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between">
+                <div class="absolute top-0 right-0 w-40 h-40 bg-emerald-50 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-500"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center text-2xl shadow-md">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-emerald-600 block">Pilar 03</span>
+                            <h4 class="text-base sm:text-lg font-black text-slate-900 leading-tight">Desenvolvimento Web &amp; Aplicações</h4>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                        Construção de sistemas web, landing pages, sites institucionais e plataformas modulares (<strong>PHP, HTML, CSS, JavaScript</strong>) com foco em arquitetura limpa, performance e SEO.
+                    </p>
+                    <div class="flex items-start gap-2 text-xs text-emerald-700 bg-emerald-50 rounded-xl p-3 border border-emerald-100">
+                        <i class="fas fa-bullseye mt-0.5 shrink-0"></i>
+                        <span><strong>Para quem:</strong> Profissionais, pequenas e médias empresas que precisam de presença digital sólida ou sistemas internos sob medida.</span>
+                    </div>
+                </div>
+                <div class="relative z-10 flex flex-wrap gap-1.5 mt-5 pt-4 border-t border-slate-100">
+                    <span class="text-xs font-mono font-bold bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md">PHP</span>
+                    <span class="text-xs font-mono font-bold bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md">HTML/CSS</span>
+                    <span class="text-xs font-mono font-bold bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md">JavaScript</span>
+                    <span class="text-xs font-mono font-bold bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md">SEO</span>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <?php endif; ?>
+
 </section>
 
