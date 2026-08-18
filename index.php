@@ -9,7 +9,7 @@ while ($row = $settings_stmt->fetch()) {
 }
 $theme_color = $global_settings['theme_color'] ?? 'indigo';
 
-$pageTitle = "Blog & Portfólio Tech";
+$pageTitle = "Portfólio Tech";
 include 'includes/head.php'; 
 include 'includes/sidebar.php'; 
 ?>
