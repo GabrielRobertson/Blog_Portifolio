@@ -170,6 +170,11 @@ include 'includes/header.php';
             </div>
 
             <div class="mb-6">
+                <label class="block text-sm font-semibold text-gray-600 mb-2">Descrição</label>
+                <input type="text" name="description" id="skill_description" value="<?php echo htmlspecialchars($exp['description'] ?? ''); ?>" class="w-full p-3 border border-gray-200 rounded-lg bg-white" placeholder="ex: Desenvolvedor Web">
+            </div>
+
+            <div class="mb-6">
                 <label class="block text-sm font-semibold text-gray-600 mb-2">Ordem de Exibição</label>
                 <input type="number" name="order_index" value="<?php echo htmlspecialchars($exp['order_index'] ?? '0'); ?>" class="w-full p-3 border rounded-lg w-1/3">
             </div>
