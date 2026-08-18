@@ -141,6 +141,7 @@ include 'includes/header.php';
                         <option value="Banco de Dados" <?php echo (($exp['category'] ?? '') == 'Banco de Dados') ? 'selected' : ''; ?>>Banco de Dados</option>
                         <option value="Business Intelligence" <?php echo (($exp['category'] ?? '') == 'Business Intelligence') ? 'selected' : ''; ?>>Business Intelligence</option>
                         <option value="Aplicações & Cloud" <?php echo (($exp['category'] ?? '') == 'Aplicações & Cloud') ? 'selected' : ''; ?>>Aplicações & Cloud</option>
+                        <option value="Desenvolvimento Web & Software" <?php echo (($exp['category'] ?? '') == 'Desenvolvimento Web & Software') ? 'selected' : ''; ?>>Desenvolvimento Web & Software</option>
                         <option value="Outros" <?php echo (($exp['category'] ?? '') == 'Outros') ? 'selected' : ''; ?>>Outros</option>
                     </select>
                 </div>
