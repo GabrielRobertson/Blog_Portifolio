@@ -90,7 +90,7 @@ $freelance_on      = ($settings['freelance_available']   ?? '1') === '1';
                     <i class="fas fa-bullseye"></i>
                 </div>
 
-                <h3 class="text-xl sm:text-2xl font-black mb-4 leading-snug">
+                <h3 class="text-xl sm:text-2xl text-slate-100 mb-4 leading-snug">
                     Missão & Propósito
                 </h3>
 

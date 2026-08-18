@@ -27,7 +27,7 @@ include 'includes/sidebar.php';
                     <span class="text-[10px] font-black uppercase tracking-[0.2em] text-purple-200">Espaço Pessoal & Criativo</span>
                 </div>
 
-                <h1 class="text-3xl lg:text-5xl font-black mb-4 leading-tight">
+                <h1 class="text-3xl lg:text-5xl text-slate-100 mb-4 leading-tight">
                     Meu <span class="text-purple-400">Laboratório</span> & Hobbies
                 </h1>
 
