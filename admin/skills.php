@@ -18,7 +18,7 @@ if (isset($_POST['save'])) {
         $stmt->execute([$name, $category, $description, $icon_class, $color_class, $order_index, $id]);
         header("Location: skills.php?msg=updated");
     } else {
-        $stmt = $pdo->prepare("INSERT INTO skills (name, category, description, icon_class, color_class, order_index) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO skills (name, category, description, icon_class, color_class, order_index) VALUES (?, ?, ?, ?,?, ?)");
         $stmt->execute([$name, $category, $description, $icon_class, $color_class, $order_index]);
         header("Location: skills.php?msg=saved");
     }
